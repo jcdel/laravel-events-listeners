@@ -2,14 +2,14 @@
 
 namespace App\Listeners;
 
-use App\Events\UserCreated;
+use App\Events\LoginNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendWelcomeEmail;
+use App\Mail\SendLoginNotification;
 
 
-class SendWelcomeEmailListeners implements ShouldQueue
+class SendLoginNotificationListeners implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -24,10 +24,10 @@ class SendWelcomeEmailListeners implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  UserCreated  $event
+     * @param  LoginNotification  $event
      * @return void
      */
-    public function handle(UserCreated $event)
+    public function handle(LoginNotification $event)
     {
         $user = $event->user;
 
@@ -35,8 +35,8 @@ class SendWelcomeEmailListeners implements ShouldQueue
             'name' => $user->name,
             'email' => $user->email,
         ];
-       
-        // Send Welcome Email
-        Mail::to($user->email)->send(new SendWelcomeEmail($users));
+
+        // Send Login Notification
+        Mail::to($user->email)->send(new SendLoginNotification($users));
     }
 }

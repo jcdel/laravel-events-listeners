@@ -4,9 +4,12 @@
     <title>Laravel Email</title>
 </head>
 <body>
-    <h1>{{ $users['name'] }}</h1>
-    <p>{{ $users['email'] }}</p>
+    <h1>Welcome to my App! </h1>
+
+    <p>Name: {{ $users['name'] }}</p>
+    <p>Email: {{ $users['email'] }}</p>
+
+    <p>Test Email Using Laravel Event and Listeners</p>
    
-    <p>Thank you</p>
 </body>
 </html>

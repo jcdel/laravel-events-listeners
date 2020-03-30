@@ -8,6 +8,8 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\UserCreated;
 use App\Listeners\SendWelcomeEmailListeners;
+use App\Events\LoginNotification;
+use App\Listeners\SendLoginNotificationListeners;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserCreated::class => [
             SendWelcomeEmailListeners::class,
+        ],
+        LoginNotification::class => [
+            SendLoginNotificationListeners::class,
         ]
     ];
 

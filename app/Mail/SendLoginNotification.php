@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendWelcomeEmail extends Mailable
+class SendLoginNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -30,7 +30,7 @@ class SendWelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome Email')
-                    ->view('emails.welcomeEmail');
+        return $this->subject('Login Notification')
+                    ->view('emails.loginNotification');
     }
 }
